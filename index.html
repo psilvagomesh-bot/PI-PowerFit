@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PowerFit Suplementos — Aumente o nível do seu treino com os melhores suplementos do mercado.">
+    <meta name="keywords" content="suplementos, whey protein, creatina, pré-treino, PowerFit, academia">
+    <meta name="author" content="PowerFit Suplementos">
+    <link rel="stylesheet" href="css/style.css">
+    <title>PowerFit Suplementos — Home</title>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="topo">
+        <div class="topo-inner">
+            <div class="logo">
+                <a href="index.html">Power<span>Fit</span></a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav>
+                <ul class="menu" id="menu">
+                    <li><a href="index.html" class="ativo">Início</a></li>
+                    <li><a href="pages/sobre.html">Sobre</a></li>
+                    <li><a href="pages/receitas.html">Receitas</a></li>
+                    <li><a href="pages/produtos.html">Produtos</a></li>
+                    <li><a href="pages/contato.html">Contato</a></li>
+                    <li><a href="pages/carrinho.html" class="carrinho-icon">🛒 <span class="badge" id="badgeContador">0</span></a></li>
+                    <li><a href="pages/login.html" class="btn-login-nav" id="linkLogin">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+                <span class="hero-badge">⚡ #1 em Suplementação Esportiva</span>
+                <h1>Potência que<br><span>acompanha seu ritmo</span></h1>
+                <p>
+                    Na <strong>PowerFit</strong> você encontra os melhores suplementos para maximizar
+                    sua performance, acelerar seus resultados e transformar seu treino.
+                </p>
+                <div class="hero-acoes">
+                    <a href="pages/produtos.html" class="btn-primario">🛒 Ver Produtos</a>
+                    <a href="pages/contato.html" class="btn-secundario">Fale com a gente</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-numero">5K+</div>
+                        <div class="stat-label">Clientes Satisfeitos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-numero">100+</div>
+                        <div class="stat-label">Produtos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-numero">5★</div>
+                        <div class="stat-label">Avaliação Média</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFÍCIOS -->
+        <section class="beneficios">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Por que escolher a <span>PowerFit</span>?</h2>
+                    <p>Qualidade, performance e resultados reais. É isso que entregamos.</p>
+                </div>
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon">💪</div>
+                        <h4>Produtos Testados</h4>
+                        <p>Todos os produtos são testados e aprovados com certificação de qualidade.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon">⚡</div>
+                        <h4>Mais Energia</h4>
+                        <p>Fórmulas desenvolvidas para aumentar sua energia e resistência durante o treino.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon">🏋️</div>
+                        <h4>Resultados Reais</h4>
+                        <p>Suplementos que entregam resultados visíveis e duradouros no seu desempenho.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon">📦</div>
+                        <h4>Entrega Rápida</h4>
+                        <p>Envio rápido e seguro para todo o Brasil com rastreamento em tempo real.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUTOS EM DESTAQUE (renderizados do JSON) -->
+        <section class="produtos-destaque">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Produtos em <span>Destaque</span></h2>
+                    <p>Os favoritos dos nossos clientes — escolha o seu e comece a evoluir.</p>
+                </div>
+                <div class="produtos-grid" id="produtos-destaque-grid">
+                    <!-- Cards gerados dinamicamente por script.js -->
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="pages/produtos.html" class="btn-secundario">Ver todos os produtos →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <div class="container">
+                <h2>Pronto para <span>evoluir?</span></h2>
+                <p>Comece hoje mesmo a transformar seu corpo e sua performance com os melhores suplementos.</p>
+                <a href="pages/produtos.html" class="btn-primario">🚀 Quero evoluir agora</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="container">
+            <div class="rodape-grid">
+                <div class="rodape-logo">
+                    <a href="index.html">Power<span>Fit</span></a>
+                    <p>Sua loja de suplementos esportivos. Qualidade e performance para quem leva o treino a sério.</p>
+                </div>
+                <div class="rodape-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="pages/sobre.html">Sobre Nós</a></li>
+                        <li><a href="pages/produtos.html">Produtos</a></li>
+                        <li><a href="pages/receitas.html">Receitas</a></li>
+                    </ul>
+                </div>
+                <div class="rodape-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="pages/contato.html">Contato</a></li>
+                        <li><a href="pages/login.html">Login</a></li>
+                        <li><a href="pages/carrinho.html">Carrinho</a></li>
+                    </ul>
+                </div>
+                <div class="rodape-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:contato@powerfit.com.br">contato@powerfit.com.br</a></li>
+                        <li><a href="tel:+5511999999999">(11) 99999-9999</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rodape-bottom">
+                <p>© 2026 PowerFit Suplementos. Todos os direitos reservados.</p>
+                <div class="rodape-social">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">📸</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook">📘</a>
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" title="WhatsApp">💬</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+    <script src="js/script.js"></script>
+</body>
+</html>

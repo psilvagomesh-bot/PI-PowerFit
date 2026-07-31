@@ -1,0 +1,31 @@
+{
+  "name": "projeto_powerfit",
+  "version": "1.1.0",
+  "description": "PowerFit Suplementos — Loja virtual de suplementos esportivos",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "suplementos",
+    "ecommerce",
+    "academia",
+    "powerfit",
+    "nodejs",
+    "express"
+  ],
+  "author": "PowerFit Suplementos",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-session": "^1.18.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.11.0",
+    "validator": "^13.12.0"
+  }
+}

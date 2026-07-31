@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Produtos PowerFit — Whey Protein, Creatina, Pré-Treino, Hipercalórico e muito mais.">
+    <meta name="keywords" content="suplementos, whey, creatina, pré-treino, hipercalórico, PowerFit">
+    <meta name="author" content="PowerFit Suplementos">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>PowerFit — Produtos</title>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="topo">
+        <div class="topo-inner">
+            <div class="logo">
+                <a href="../index.html">Power<span>Fit</span></a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav>
+                <ul class="menu" id="menu">
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="receitas.html">Receitas</a></li>
+                    <li><a href="produtos.html" class="ativo">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html" class="carrinho-icon">🛒 <span class="badge" id="badgeContador">0</span></a></li>
+                    <li><a href="login.html" class="btn-login-nav" id="linkLogin">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO DA PÁGINA -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Nossos <span>Produtos</span></h1>
+                <p>Suplementos premium para potencializar seus resultados no treino.</p>
+            </div>
+        </section>
+
+        <!-- CATÁLOGO -->
+        <section class="produtos-page">
+            <div class="container">
+                <!-- Filtros -->
+                <div class="filtros">
+                    <button class="filtro-btn ativo" data-filtro="todos">Todos</button>
+                    <button class="filtro-btn" data-filtro="proteina">Proteína</button>
+                    <button class="filtro-btn" data-filtro="creatina">Creatina</button>
+                    <button class="filtro-btn" data-filtro="pretreino">Pré-Treino</button>
+                    <button class="filtro-btn" data-filtro="massa">Ganho de Massa</button>
+                    <button class="filtro-btn" data-filtro="aminoacido">Aminoácido</button>
+                </div>
+
+                <!-- Barra de pesquisa -->
+                <div class="barra-pesquisa">
+                    <input type="text" id="pesquisaProduto" placeholder="🔎 Buscar produto...">
+                </div>
+
+                <!-- Grade de produtos renderizada dinamicamente -->
+                <div class="produtos-grid" id="lista-produtos">
+                    <!-- Cards gerados por script.js via fetch /produtos -->
+                </div>
+
+                <p id="mensagem-vazia" style="display:none; text-align:center; padding:40px; color: var(--cinza-texto);">
+                    Nenhum produto encontrado com esse filtro ou termo de busca.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="container">
+            <div class="rodape-grid">
+                <div class="rodape-logo">
+                    <a href="../index.html">Power<span>Fit</span></a>
+                    <p>Sua loja de suplementos esportivos. Qualidade e performance para quem leva o treino a sério.</p>
+                </div>
+                <div class="rodape-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="receitas.html">Receitas</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                    </ul>
+                </div>
+                <div class="rodape-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="carrinho.html">Carrinho</a></li>
+                    </ul>
+                </div>
+                <div class="rodape-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:contato@powerfit.com.br">contato@powerfit.com.br</a></li>
+                        <li><a href="tel:+5511999999999">(11) 99999-9999</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rodape-bottom">
+                <p>© 2026 PowerFit Suplementos. Todos os direitos reservados.</p>
+                <div class="rodape-social">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">📸</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook">📘</a>
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" title="WhatsApp">💬</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

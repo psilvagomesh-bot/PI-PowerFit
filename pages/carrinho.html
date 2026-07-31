@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carrinho de compras PowerFit — Finalize seu pedido de suplementos.">
+    <meta name="keywords" content="carrinho, compra, suplementos, PowerFit">
+    <meta name="author" content="PowerFit Suplementos">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>PowerFit — Carrinho</title>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="topo">
+        <div class="topo-inner">
+            <div class="logo">
+                <a href="../index.html">Power<span>Fit</span></a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav>
+                <ul class="menu" id="menu">
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="receitas.html">Receitas</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="carrinho.html" class="carrinho-icon ativo">🛒 <span class="badge" id="badgeContador">0</span></a></li>
+                    <li><a href="login.html" class="btn-login-nav" id="linkLogin">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Meu <span>Carrinho</span></h1>
+                <p>Revise os itens antes de finalizar sua compra.</p>
+            </div>
+        </section>
+
+        <section class="carrinho-page">
+            <div class="container">
+                <div class="carrinho-layout" id="carrinho-layout">
+
+                    <div>
+                        <h2 class="carrinho-itens-titulo">Itens do <span>Carrinho</span></h2>
+
+                        <div id="lista-carrinho"></div>
+
+                        <div class="carrinho-vazio" id="carrinho-vazio">
+                            <p style="font-size: 48px; margin-bottom: 12px;">🛒</p>
+                            <p>Seu carrinho está vazio.</p>
+                            <a href="produtos.html" class="btn-primario">Ver Produtos</a>
+                        </div>
+                    </div>
+
+                    <div class="carrinho-resumo" id="carrinho-resumo" style="display:none;">
+                        <div class="resumo-titulo">Resumo do Pedido</div>
+
+                        <div class="resumo-linha">
+                            <span class="label">Subtotal</span>
+                            <span class="valor" id="resumo-subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="resumo-linha">
+                            <span class="label">Desconto</span>
+                            <span class="valor" style="color: #4CAF50;">— R$ 0,00</span>
+                        </div>
+                        <div class="resumo-linha">
+                            <span class="label">Frete</span>
+                            <span class="valor" style="color: var(--neon);">Grátis</span>
+                        </div>
+
+                        <div class="resumo-total">
+                            <span class="label">Total</span>
+                            <span class="valor-total" id="resumo-total">R$ 0,00</span>
+                        </div>
+
+                        <button class="botao-comprar" onclick="finalizarCompra()">
+                            🛒 FINALIZAR COMPRA
+                        </button>
+
+                        <p id="aviso-login" style="display:none; text-align:center; color: var(--cinza-texto); font-size:13px; margin-top: 14px;">
+                            ⚠️ Você precisa <a href="login.html" style="color: var(--neon);">fazer login</a> para finalizar.
+                        </p>
+
+                        <a href="produtos.html" style="display:block; text-align:center; margin-top: 16px; font-size:13px; color: var(--cinza-texto);">
+                            ← Continuar Comprando
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL — Pedido finalizado -->
+    <div class="modal-overlay" id="modal-pedido" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-emoji">✅</div>
+            <h2>Pedido <span>Confirmado!</span></h2>
+            <p>Seu pedido foi registrado com sucesso.</p>
+            <p style="margin-top: 16px; font-size: 14px; color: var(--cinza-texto);">
+                Protocolo: <strong id="modal-protocolo" style="color: var(--neon);"></strong>
+            </p>
+            <p style="margin-top: 8px; font-size: 13px; color: var(--cinza-texto);">
+                Total: <strong id="modal-total" style="color: var(--branco);"></strong>
+            </p>
+            <a href="../index.html" class="btn-primario" style="margin-top: 24px;">Voltar à loja</a>
+        </div>
+    </div>
+
+    <footer class="rodape">
+        <div class="container">
+            <div class="rodape-grid">
+                <div class="rodape-logo">
+                    <a href="../index.html">Power<span>Fit</span></a>
+                    <p>Sua loja de suplementos esportivos. Qualidade e performance para quem leva o treino a sério.</p>
+                </div>
+                <div class="rodape-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="receitas.html">Receitas</a></li>
+                        <li><a href="produtos.html">Produtos</a></li>
+                    </ul>
+                </div>
+                <div class="rodape-col">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="carrinho.html">Carrinho</a></li>
+                    </ul>
+                </div>
+                <div class="rodape-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="mailto:contato@powerfit.com.br">contato@powerfit.com.br</a></li>
+                        <li><a href="tel:+5511999999999">(11) 99999-9999</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rodape-bottom">
+                <p>© 2026 PowerFit Suplementos. Todos os direitos reservados.</p>
+                <div class="rodape-social">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">📸</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook">📘</a>
+                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" title="WhatsApp">💬</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Whey Protein Pro 1kg",
+      "categoria": "proteina",
+      "categoria_label": "Proteína",
+      "preco": 129.90,
+      "preco_original": 159.90,
+      "descricao": "Proteína de soro de leite de alta qualidade. Ideal para recuperação muscular e ganho de massa magra.",
+      "imagem": "../imagens/whey.jpg",
+      "badge": "🔥 Mais Vendido"
+    },
+    {
+      "id": 2,
+      "nome": "Creatina Monohidratada 300g",
+      "categoria": "creatina",
+      "categoria_label": "Creatina",
+      "preco": 69.90,
+      "preco_original": 89.90,
+      "descricao": "Aumente sua força e potência. Creatina pura de grau farmacêutico para máxima absorção.",
+      "imagem": "../imagens/creatina.jpg",
+      "badge": "⚡ Oferta"
+    },
+    {
+      "id": 3,
+      "nome": "Pré-Treino Extreme 300g",
+      "categoria": "pretreino",
+      "categoria_label": "Pré-Treino",
+      "preco": 89.90,
+      "preco_original": null,
+      "descricao": "Energia explosiva, foco total e vasodilatação para um treino de alto desempenho.",
+      "imagem": "../imagens/pretreino.jpg",
+      "badge": null
+    },
+    {
+      "id": 4,
+      "nome": "Hipercalórico Mass 3kg",
+      "categoria": "massa",
+      "categoria_label": "Ganho de Massa",
+      "preco": 149.90,
+      "preco_original": null,
+      "descricao": "Alto teor calórico com proteínas e carboidratos balanceados para ganho de massa eficiente.",
+      "imagem": "../imagens/hipercalorico.jpg",
+      "badge": null
+    },
+    {
+      "id": 5,
+      "nome": "Whey Protein Isolado 900g",
+      "categoria": "proteina",
+      "categoria_label": "Proteína",
+      "preco": 189.90,
+      "preco_original": 229.90,
+      "descricao": "Versão isolada com 90% de proteína por porção. Zero lactose e baixíssimo teor de gordura.",
+      "imagem": "../imagens/isolado.jpeg",
+      "badge": "🌟 Premium"
+    },
+    {
+      "id": 6,
+      "nome": "BCAA",
+      "categoria": "aminoacido",
+      "categoria_label": "Aminoácido",
+      "preco": 79.90,
+      "preco_original": 94.90,
+      "descricao": "BCAA de cadeia ramificada — leucina, isoleucina e valina — para quem treina de verdade.",
+      "imagem": "../imagens/bcaa.png",
+      "badge": null
+    }
+  ]
+}
