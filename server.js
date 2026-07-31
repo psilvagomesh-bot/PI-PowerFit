@@ -39,7 +39,7 @@ const allowedOrigins = [
     "http://127.0.0.1:3000",
     "http://localhost:5500", // Live Server (VSCode)
     "http://127.0.0.1:5500",
-    "https://psilvagomesh-bot.github.io/PI-PowerFit/"
+    "https://psilvagomesh-bot.github.io/PI-PowerFit"
 ];
 app.use(cors({
     origin: (origin, cb) => {
