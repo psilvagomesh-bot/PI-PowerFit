@@ -39,7 +39,7 @@ const allowedOrigins = [
     "http://127.0.0.1:3000",
     "http://localhost:5500", // Live Server (VSCode)
     "http://127.0.0.1:5500",
-    "https://psilvagomesh-bot.github.io/PI-PowerFit"
+    "https://candy-coffee-5kc6.onrender.com",
 ];
 app.use(cors({
     origin: (origin, cb) => {
@@ -112,12 +112,31 @@ const upload = multer({
 
 /* ── TESTE DE CONEXÃO ───────────────────────────────────── */
 
-pool.getConnection()
-    .then(() => console.log("✅ Banco conectado com sucesso!"))
-    .catch((erro) => {
-        console.error("❌ Erro ao conectar no banco:");
+(async () => {
+    try {
+
+        const conn = await pool.getConnection();
+
+        console.log("✅ Banco conectado.");
+
+        const [rows] = await conn.query("SELECT DATABASE() banco");
+
+        console.log("Banco em uso:", rows[0].banco);
+
+        conn.release();
+
+    } catch (erro) {
+
+        console.error("Erro ao conectar:");
+
         console.error(erro);
-    });
+
+    }
+})();
+
+const [tabelas] = await conn.query("SHOW TABLES");
+
+console.table(tabelas);
 
 /* ── MIDDLEWARES AUXILIARES ─────────────────────────────── */
 
@@ -132,31 +151,86 @@ function sanitizar(str = "") {
 
 /* ── ROTAS ──────────────────────────────────────────────── */
 
+app.get("/teste-db", async (req, res) => {
+
+    try {
+
+        const [rows] = await pool.query("SELECT * FROM tb_mensagem LIMIT 1");
+
+        res.json(rows);
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        res.status(500).json({
+            erro: erro.code,
+            mensagem: erro.sqlMessage
+        });
+
+    }
+
+});
+
+
 /* POST /mensagem  →  grava mensagem do formulário de contato */
 app.post("/mensagem", async (req, res) => {
     try {
-        const nome      = sanitizar(req.body.nome);
-        const email     = validator.normalizeEmail(sanitizar(req.body.email)) || "";
-        const mensagem  = sanitizar(req.body.mensagem);
+        console.log("=== NOVA MENSAGEM ===");
+        console.log(req.body);
+
+        const nome = sanitizar(req.body.nome);
+        const email = validator.normalizeEmail(sanitizar(req.body.email)) || "";
+        const mensagem = sanitizar(req.body.mensagem);
 
         if (!nome || !email || !mensagem) {
-            return res.status(400).json({ mensagem: "Preencha todos os campos." });
-        }
-        if (!validator.isEmail(email)) {
-            return res.status(400).json({ mensagem: "E-mail inválido." });
+            return res.status(400).json({
+                sucesso: false,
+                mensagem: "Preencha todos os campos."
+            });
         }
 
-        await pool.execute(
-            "INSERT INTO tb_mensagem (nome, email, mensagem) VALUES (?, ?, ?)",
-            [validator.escape(nome), validator.escape(email), validator.escape(mensagem)]
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({
+                sucesso: false,
+                mensagem: "E-mail inválido."
+            });
+        }
+
+        const [resultado] = await pool.execute(
+            `INSERT INTO tb_mensagem (nome, email, mensagem)
+             VALUES (?, ?, ?)`,
+            [
+                validator.escape(nome),
+                validator.escape(email),
+                validator.escape(mensagem)
+            ]
         );
 
-        return res.status(201).json({ mensagem: "Mensagem enviada com sucesso!" });
+        console.log("Mensagem salva com ID:", resultado.insertId);
+
+        return res.status(201).json({
+            sucesso: true,
+            mensagem: "Mensagem enviada com sucesso!"
+        });
+
     } catch (error) {
-        console.error("❌ Erro em /mensagem:", error);
-        return res.status(500).json({ mensagem: "Erro no servidor." });
+
+        console.error("============== ERRO ==============");
+        console.error("Code:", error.code);
+        console.error("Errno:", error.errno);
+        console.error("SQL:", error.sqlMessage);
+        console.error(error);
+        console.error("==================================");
+
+        return res.status(500).json({
+            sucesso: false,
+            mensagem: "Erro interno do servidor.",
+            erro: error.code
+        });
     }
 });
+
 
 /* POST /cadastro  →  cria usuário com senha hash bcrypt */
 app.post("/cadastro", authLimiter, async (req, res) => {
