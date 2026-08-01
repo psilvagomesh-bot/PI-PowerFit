@@ -26,7 +26,9 @@
         }
 
         try {
-            const baseURL = "https://candy-coffee-5kc6.onrender.com"
+            const baseURL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+                ? "" 
+                : "https://candy-coffee-5kc6.onrender.com";
 
             const resposta = await fetch(`${baseURL}/mensagem`, {
                 method: "POST",

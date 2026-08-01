@@ -5,7 +5,10 @@
              de autenticação via /me.
    ============================================================ */
 
-const API_BASE = "https://candy-coffee-5kc6.onrender.com"
+// Detecta se está rodando localmente ou em produção
+const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "" // Em local, usa caminhos relativos (mesmo origin)
+    : "https://candy-coffee-5kc6.onrender.com"; // Em produção, usa o backend remoto
 
 /* ── UTILITÁRIOS ─────────────────────────────────────────── */
 

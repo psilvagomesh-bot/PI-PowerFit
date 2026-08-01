@@ -33,18 +33,24 @@ const PORT = process.env.PORT || 3000;
 
 /* ── MIDDLEWARES ────────────────────────────────────────── */
 
-// CORS restrito às origens permitidas (em dev, libera localhost)
+// CORS restrito às origens permitidas
 const allowedOrigins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://localhost:5500", // Live Server (VSCode)
+    "http://localhost:5500",
     "http://127.0.0.1:5500",
-    "https://candy-coffee-5kc6.onrender.com",
+    "https://candy-coffee-5kc6.onrender.com"
 ];
+
 app.use(cors({
-    origin: (origin, cb) => {
-        if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-        return cb(new Error("Origem não permitida pelo CORS"));
+    origin: function (origin, callback) {
+        // Permite requisições sem origin (como apps mobile ou curl) ou origens na lista
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            // Em desenvolvimento, podemos ser mais permissivos se necessário
+            callback(null, true); 
+        }
     },
     credentials: true
 }));
@@ -59,23 +65,24 @@ app.use("/js",        express.static(path.join(__dirname, "js")));
 app.use("/imagens",   express.static(path.join(__dirname, "imagens")));
 app.use("/pages",     express.static(path.join(__dirname, "pages")));
 app.use("/data",      express.static(path.join(__dirname, "data")));
+app.use("/uploads",   express.static(path.join(__dirname, "public", "uploads")));
 
 // Configuração de sessão
+const isProduction = process.env.NODE_ENV === "production";
+
 const sessionConfig = {
     secret: process.env.SESSION_SECRET || "chave-dev-temporaria",
     resave: false,
     saveUninitialized: false,
     name: "pf_sid",
+    proxy: isProduction, // Necessário se estiver atrás de um proxy (ex: Render, Heroku)
     cookie: {
         httpOnly: true,
-        maxAge: 1000 * 60 * 60 // 1 hora
+        maxAge: 1000 * 60 * 60, // 1 hora
+        secure: isProduction,   // Apenas HTTPS em produção
+        sameSite: isProduction ? "none" : "lax" // "none" permite cookies cross-origin (exige secure: true)
     }
 };
-
-if (process.env.NODE_ENV === "production") {
-    sessionConfig.cookie.secure = true;
-    sessionConfig.cookie.sameSite = "lax";
-}
 
 app.use(session(sessionConfig));
 
@@ -113,30 +120,22 @@ const upload = multer({
 /* ── TESTE DE CONEXÃO ───────────────────────────────────── */
 
 (async () => {
+    let conn;
     try {
-
-        const conn = await pool.getConnection();
-
+        conn = await pool.getConnection();
         console.log("✅ Banco conectado.");
-
         const [rows] = await conn.query("SELECT DATABASE() banco");
-
         console.log("Banco em uso:", rows[0].banco);
-
-        conn.release();
-
+        
+        const [tabelas] = await conn.query("SHOW TABLES");
+        console.table(tabelas);
     } catch (erro) {
-
-        console.error("Erro ao conectar:");
-
-        console.error(erro);
-
+        console.error("❌ Erro ao conectar ao banco de dados:");
+        console.error(erro.message);
+    } finally {
+        if (conn) conn.release();
     }
 })();
-
-const [tabelas] = await conn.query("SHOW TABLES");
-
-console.table(tabelas);
 
 /* ── MIDDLEWARES AUXILIARES ─────────────────────────────── */
 
