@@ -28,28 +28,6 @@ Loja virtual de suplementos esportivos com vitrine, carrinho, autenticação e p
 
 ---
 
-## 🚀 Instalação
-
-```bash
-# 1. Clonar ou baixar o projeto
-git clone <repo-url> PI-PowerFit && cd PI-PowerFit
-
-# 2. Instalar dependências
-npm install
-
-# 3. Configurar variáveis de ambiente
-cp .env.example .env
-# edite o .env com seus valores reais (host, usuário, senha do MySQL etc.)
-
-# 4. Criar o schema do banco
-# No MySQL local OU via cliente (HeidiSQL, DBeaver etc.):
-mysql -u root -p < data/schema.sql
-# Em hospedagens gerenciadas (Aiven), basta colar o conteúdo de data/schema.sql no console SQL.
-
-# 5. Iniciar o servidor
-npm start
-```
-
 O servidor estará disponível em **http://localhost:3000**.
 
 ---
@@ -62,11 +40,10 @@ PI-PowerFit/
 ├── db.js                  # Pool de conexões MySQL
 ├── package.json
 ├── README.md
-├── .env.example           # Modelo das variáveis de ambiente
+├── 
 ├── .gitignore
 ├── data/
 │   ├── script.json        # Catálogo de produtos
-│   └── schema.sql         # Script de criação do banco
 ├── public/uploads/        # Imagens enviadas nas receitas
 ├── css/
 │   └── style.css          # Estilo global (paleta dark + neon)
@@ -111,8 +88,6 @@ PI-PowerFit/
 | `tb_mensagem` | `id`, `nome`, `email`, `mensagem`, `criado_em`     |
 | `tb_receitas` | `id`, `autor`, `titulo`, `descricao`, `imagem`     |
 | `tb_pedidos`  | `id`, `usuario_id` (FK), `itens` (JSON), `total`   |
-
-Schema completo em **data/schema.sql**.
 
 ---
 
