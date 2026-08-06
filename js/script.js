@@ -6,7 +6,7 @@
    ============================================================ */
 
 // Detecta se está rodando localmente ou em produção
-const API_BASE = "https://candy-coffee-5kc6.onrender.com";
+const API_BASE = "http://localhost:3000";
        // Em local, usa caminhos relativos (mesmo origin)
       // Em produção, usa o backend remoto
 

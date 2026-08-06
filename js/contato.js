@@ -28,7 +28,7 @@
         try {
             const baseURL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
                 ? "" 
-                : "https://candy-coffee-5kc6.onrender.com";
+                : "http://localhost:3000";
 
             const resposta = await fetch(`${baseURL}/mensagem`, {
                 method: "POST",
